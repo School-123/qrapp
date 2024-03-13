@@ -1,4 +1,7 @@
+
+
 import 'package:flutter/material.dart';
+import 'package:qr_app/qr.dart';
 
 class registration extends StatefulWidget {
   const registration({Key? key}) : super(key: key);
@@ -79,7 +82,7 @@ class _registrationState extends State<registration> {
         height: 10,
         width: 18,
       ),
-      ElevatedButton(onPressed: () {},style: ElevatedButton.styleFrom(primary: Colors.green), child: Text('Login')),
+      ElevatedButton(onPressed: () {Navigator.push(context,MaterialPageRoute(builder:(context)=>Qrpage()));},style: ElevatedButton.styleFrom(primary: Colors.green), child: Text('Login')),
 
         ],
       ),

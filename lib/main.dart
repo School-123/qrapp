@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_app/registration.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -64,7 +65,8 @@ class _QRAppState extends State<QRApp> {
           height: 10,
           width: 18,
         ),
-        ElevatedButton(onPressed: () {},style: ElevatedButton.styleFrom(primary: Colors.green), child: Text('Login')),
+        ElevatedButton(onPressed: () {Navigator.push(context,MaterialPageRoute(builder:(context)=>registration()));},style: ElevatedButton.styleFrom(primary: Colors.green), child: Text('Login')),
+
         Text(
             textAlign: TextAlign.center,
             'dont have an account?,sign in'),
