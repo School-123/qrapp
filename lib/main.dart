@@ -65,7 +65,7 @@ class _QRAppState extends State<QRApp> {
           height: 10,
           width: 18,
         ),
-        ElevatedButton(onPressed: () {Navigator.push(context,MaterialPageRoute(builder:(context)=>registration()));},style: ElevatedButton.styleFrom(primary: Colors.green), child: Text('Login')),
+        ElevatedButton(onPressed: () {Navigator.push(context,MaterialPageRoute(builder:(context)=>registration()));},style: ElevatedButton.styleFrom(backgroundColor: Colors.green), child: Text('Login')),
 
         Text(
             textAlign: TextAlign.center,

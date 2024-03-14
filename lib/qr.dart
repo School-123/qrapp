@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_app/image.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class Qrpage extends StatefulWidget {
@@ -16,25 +17,31 @@ class _QrpageState extends State<Qrpage> {
         appBar: AppBar(
           backgroundColor: Colors.green,
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.person_pin,
-              size: 130,
-              color: Colors.white,
-            ),
-            SizedBox(
-              height: 24,
-            ),
-            QrImage(data: '1234567890',
-              version: QrVersions.auto,
-              size: 200.0,),
-            ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(primary: Colors.green),
-                child: Text('Scan'))
-          ],
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.person_pin,
+                size: 130,
+                color: Colors.white,
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              QrImageView(data: '1234567890',
+                version: QrVersions.auto,
+                size: 200.0,),
+              ElevatedButton(
+                  onPressed: () {Navigator.push(context,MaterialPageRoute(builder:(context)=>impage()));},
+
+
+
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+                  child: Text('scan')),
+            ],
+          ),
         ));
   }
 }
+

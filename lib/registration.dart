@@ -82,7 +82,7 @@ class _registrationState extends State<registration> {
         height: 10,
         width: 18,
       ),
-      ElevatedButton(onPressed: () {Navigator.push(context,MaterialPageRoute(builder:(context)=>Qrpage()));},style: ElevatedButton.styleFrom(primary: Colors.green), child: Text('Login')),
+      ElevatedButton(onPressed: () {Navigator.push(context,MaterialPageRoute(builder:(context)=>Qrpage()));},style: ElevatedButton.styleFrom(backgroundColor: Colors.green), child: Text('Login')),
 
         ],
       ),
