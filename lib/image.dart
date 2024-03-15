@@ -29,6 +29,10 @@ class _impageState extends State<impage> {
               }
             },
           ),
+          SizedBox(height: 400,),
+          TextField(decoration: InputDecoration(border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(19),
+          )),),
           ElevatedButton(
             onPressed: () {
               Navigator.push(
