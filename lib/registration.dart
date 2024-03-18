@@ -49,10 +49,6 @@ class _registrationState extends State<registration> {
           .showSnackBar(SnackBar(content:(data["message"])));}
     }
 
-    // print(name.text);
-    // print(rollno.text);
-    // print(email.text);
-    // print(password.text);
 
 
   @override
