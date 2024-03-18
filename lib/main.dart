@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:qr_app/profile.dart';
+import 'package:qr_app/qr.dart';
 import 'package:qr_app/registration.dart';
 import 'package:http/http.dart' as http;
 
@@ -43,7 +44,7 @@ class _QRAppState extends State<QRApp> {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => Profile(),
+            builder: (context) => Qrpage(),
           ));
     } else {
       ScaffoldMessenger.of(context)
