@@ -20,16 +20,18 @@ class _registrationState extends State<registration> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   void reg() async {
+
+
     Uri uri = Uri.parse('https://scnner-web.onrender.com/api/register');
     var response = await http.post(uri,
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
         body: jsonEncode({
-          'name': name.text,
-          'roll': rollno.text,
-          'email': email.text,
-          'password': password.text,
+          'name': 'name.text',
+          'roll': 'roll.txt',
+          'email': 'email.txt',
+          'password':'password.txt',
         }));
     print(response.statusCode);
     print(response.body);
@@ -38,17 +40,20 @@ class _registrationState extends State<registration> {
 
     if (response.statusCode == 200) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) =>  QRApp(),));
+          context,
+          MaterialPageRoute(
+            builder: (context) => QRApp(),
+          ));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(data["message"])
-      ));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content:(data["message"])));}
     }
 
-    print(name.text);
-    print(rollno.text);
-    print(email.text);
-    print(password.text);
-  }
+    // print(name.text);
+    // print(rollno.text);
+    // print(email.text);
+    // print(password.text);
+
 
   @override
   Widget build(BuildContext context) {
@@ -128,8 +133,8 @@ class _registrationState extends State<registration> {
           ElevatedButton(
               onPressed: () {
                 reg();
-              //   Navigator.push(
-              //       context, MaterialPageRoute(builder: (context) => Qrpage()));
+                //   Navigator.push(
+                //       context, MaterialPageRoute(builder: (context) => Qrpage()));
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
               child: Text('Login')),
@@ -138,3 +143,4 @@ class _registrationState extends State<registration> {
     );
   }
 }
+

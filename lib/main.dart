@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:qr_app/profile.dart';
 import 'package:qr_app/registration.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(MaterialApp(
@@ -14,7 +17,38 @@ class QRApp extends StatefulWidget {
   State<QRApp> createState() => _QRAppState();
 }
 
+
 class _QRAppState extends State<QRApp> {
+
+  TextEditingController rollno= TextEditingController();
+  TextEditingController password=TextEditingController();
+
+  void login()async{
+    print('rollno');
+    Uri uri = Uri.parse('https://scnner-web.onrender.com/api/login');
+    var response = await http.post(uri,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode({
+          'rollno': rollno.text,
+          'password':password.text,
+        }));
+    print(response.statusCode);
+    print(response.body);
+    var data = jsonDecode(response.body);
+    print(data["message"]);
+
+    if (response.statusCode == 200) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Profile(),
+          ));
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content:(data["message"])));}
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +67,8 @@ class _QRAppState extends State<QRApp> {
         ),
         Padding(
           padding: const EdgeInsets.all(10.0),
-          child: TextField(decoration: InputDecoration(hintText: 'enter your password',
+          child: TextField(controller: rollno,
+            decoration: InputDecoration(hintText: 'enter your password',
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
                   width: 3, color: Colors.greenAccent),
@@ -49,7 +84,8 @@ class _QRAppState extends State<QRApp> {
         ),
         Padding(
           padding: const EdgeInsets.all(10.0),
-          child: TextField(decoration: InputDecoration(hintText: 'enter your password',
+          child: TextField(
+            controller:password,decoration: InputDecoration(hintText: 'enter your password',
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
                   width: 3, color: Colors.greenAccent),
@@ -65,7 +101,7 @@ class _QRAppState extends State<QRApp> {
           height: 10,
           width: 18,
         ),
-        ElevatedButton(onPressed: () {Navigator.push(context,MaterialPageRoute(builder:(context)=>registration()));},style: ElevatedButton.styleFrom(backgroundColor: Colors.green), child: Text('Login')),
+        ElevatedButton(onPressed: () {login();},style: ElevatedButton.styleFrom(backgroundColor: Colors.green), child: Text('Login')),
 
         Text(
             textAlign: TextAlign.center,
